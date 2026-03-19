@@ -24,6 +24,7 @@ message Conversation {
   int64 msgDestructTime = 15;
   int64 latestMsgDestructTime = 16;
   bool isMsgDestruct = 17;
+  int32 exType = 18;
 }
 
 message ConversationReq {
