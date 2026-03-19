@@ -136,6 +136,7 @@ message CreateSingleChatConversationsResp {}
 message CreateGroupChatConversationsReq {
   repeated string userIDs = 1;
   string groupID = 2;
+  int32 exType = 3;
 }
 
 message CreateGroupChatConversationsResp {}
