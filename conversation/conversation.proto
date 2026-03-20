@@ -111,7 +111,7 @@ message GetConversationsResp {
 
 message GetAllConversationsReq {
   string ownerUserID = 1;
-  openim.protobuf.Int32Value exType = 3;
+  int32 exType = 2;
 }
 
 message GetAllConversationsResp {
@@ -256,7 +256,7 @@ message GetIncrementalConversationResp {
 message GetOwnerConversationReq {
   string userID = 1;
   openim.sdkws.RequestPagination pagination = 2;
-  openim.protobuf.Int32Value exType = 3;
+  int32 exType = 3;
 }
 
 message GetOwnerConversationResp {
