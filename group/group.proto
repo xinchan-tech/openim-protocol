@@ -181,7 +181,7 @@ message GetGroupsReq {
   string groupName = 2;
   string groupID = 3;
   repeated string fields = 4;
-  openim.protobuf.Int32Value ex_type = 5;
+  openim.protobuf.Int32Value exType = 5;
 }
 
 message GetGroupsResp {
