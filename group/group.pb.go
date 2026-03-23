@@ -1985,6 +1985,7 @@ type GetGroupsReq struct {
 	GroupName     string                   `protobuf:"bytes,2,opt,name=groupName,proto3" json:"groupName,omitempty"`
 	GroupID       string                   `protobuf:"bytes,3,opt,name=groupID,proto3" json:"groupID,omitempty"`
 	Fields        []string                 `protobuf:"bytes,4,rep,name=fields,proto3" json:"fields,omitempty"`
+	ExType        int32                    `protobuf:"varint,5,opt,name=ex_type,json=exType,proto3" json:"ex_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2045,6 +2046,13 @@ func (x *GetGroupsReq) GetFields() []string {
 		return x.Fields
 	}
 	return nil
+}
+
+func (x *GetGroupsReq) GetExType() int32 {
+	if x != nil {
+		return x.ExType
+	}
+	return 0
 }
 
 type GetGroupsResp struct {
@@ -4577,14 +4585,15 @@ const file_group_group_proto_rawDesc = "" +
 	"\bCMSGroup\x125\n" +
 	"\tgroupInfo\x18\x01 \x01(\v2\x17.openim.sdkws.GroupInfoR\tgroupInfo\x12.\n" +
 	"\x12groupOwnerUserName\x18\x02 \x01(\tR\x12groupOwnerUserName\x12*\n" +
-	"\x10groupOwnerUserID\x18\x03 \x01(\tR\x10groupOwnerUserID\"\x9f\x01\n" +
+	"\x10groupOwnerUserID\x18\x03 \x01(\tR\x10groupOwnerUserID\"\xb8\x01\n" +
 	"\fGetGroupsReq\x12?\n" +
 	"\n" +
 	"pagination\x18\x01 \x01(\v2\x1f.openim.sdkws.RequestPaginationR\n" +
 	"pagination\x12\x1c\n" +
 	"\tgroupName\x18\x02 \x01(\tR\tgroupName\x12\x18\n" +
 	"\agroupID\x18\x03 \x01(\tR\agroupID\x12\x16\n" +
-	"\x06fields\x18\x04 \x03(\tR\x06fields\"U\n" +
+	"\x06fields\x18\x04 \x03(\tR\x06fields\x12\x17\n" +
+	"\aex_type\x18\x05 \x01(\x05R\x06exType\"U\n" +
 	"\rGetGroupsResp\x12\x14\n" +
 	"\x05total\x18\x01 \x01(\rR\x05total\x12.\n" +
 	"\x06groups\x18\x02 \x03(\v2\x16.openim.group.CMSGroupR\x06groups\"-\n" +
