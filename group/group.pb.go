@@ -1985,7 +1985,9 @@ type GetGroupsReq struct {
 	GroupName     string                   `protobuf:"bytes,2,opt,name=groupName,proto3" json:"groupName,omitempty"`
 	GroupID       string                   `protobuf:"bytes,3,opt,name=groupID,proto3" json:"groupID,omitempty"`
 	Fields        []string                 `protobuf:"bytes,4,rep,name=fields,proto3" json:"fields,omitempty"`
-	ExType        *wrapperspb.Int32Value   `protobuf:"bytes,5,opt,name=ex_type,json=exType,proto3" json:"ex_type,omitempty"`
+	Keyword       string                   `protobuf:"bytes,5,opt,name=keyword,proto3" json:"keyword,omitempty"` // 对应fields的模糊查询值
+	ExType        *wrapperspb.Int32Value   `protobuf:"bytes,6,opt,name=exType,proto3" json:"exType,omitempty"`
+	GroupIDs      []string                 `protobuf:"bytes,7,rep,name=groupIDs,proto3" json:"groupIDs,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2048,9 +2050,23 @@ func (x *GetGroupsReq) GetFields() []string {
 	return nil
 }
 
+func (x *GetGroupsReq) GetKeyword() string {
+	if x != nil {
+		return x.Keyword
+	}
+	return ""
+}
+
 func (x *GetGroupsReq) GetExType() *wrapperspb.Int32Value {
 	if x != nil {
 		return x.ExType
+	}
+	return nil
+}
+
+func (x *GetGroupsReq) GetGroupIDs() []string {
+	if x != nil {
+		return x.GroupIDs
 	}
 	return nil
 }
@@ -4585,15 +4601,17 @@ const file_group_group_proto_rawDesc = "" +
 	"\bCMSGroup\x125\n" +
 	"\tgroupInfo\x18\x01 \x01(\v2\x17.openim.sdkws.GroupInfoR\tgroupInfo\x12.\n" +
 	"\x12groupOwnerUserName\x18\x02 \x01(\tR\x12groupOwnerUserName\x12*\n" +
-	"\x10groupOwnerUserID\x18\x03 \x01(\tR\x10groupOwnerUserID\"\xd5\x01\n" +
+	"\x10groupOwnerUserID\x18\x03 \x01(\tR\x10groupOwnerUserID\"\x8a\x02\n" +
 	"\fGetGroupsReq\x12?\n" +
 	"\n" +
 	"pagination\x18\x01 \x01(\v2\x1f.openim.sdkws.RequestPaginationR\n" +
 	"pagination\x12\x1c\n" +
 	"\tgroupName\x18\x02 \x01(\tR\tgroupName\x12\x18\n" +
 	"\agroupID\x18\x03 \x01(\tR\agroupID\x12\x16\n" +
-	"\x06fields\x18\x04 \x03(\tR\x06fields\x124\n" +
-	"\aex_type\x18\x05 \x01(\v2\x1b.openim.protobuf.Int32ValueR\x06exType\"U\n" +
+	"\x06fields\x18\x04 \x03(\tR\x06fields\x12\x18\n" +
+	"\akeyword\x18\x05 \x01(\tR\akeyword\x123\n" +
+	"\x06exType\x18\x06 \x01(\v2\x1b.openim.protobuf.Int32ValueR\x06exType\x12\x1a\n" +
+	"\bgroupIDs\x18\a \x03(\tR\bgroupIDs\"U\n" +
 	"\rGetGroupsResp\x12\x14\n" +
 	"\x05total\x18\x01 \x01(\rR\x05total\x12.\n" +
 	"\x06groups\x18\x02 \x03(\v2\x16.openim.group.CMSGroupR\x06groups\"-\n" +
@@ -4920,7 +4938,7 @@ var file_group_group_proto_depIdxs = []int32{
 	92, // 23: openim.group.GetGroupAllMemberResp.members:type_name -> openim.sdkws.GroupMemberFullInfo
 	86, // 24: openim.group.CMSGroup.groupInfo:type_name -> openim.sdkws.GroupInfo
 	90, // 25: openim.group.GetGroupsReq.pagination:type_name -> openim.sdkws.RequestPagination
-	89, // 26: openim.group.GetGroupsReq.ex_type:type_name -> openim.protobuf.Int32Value
+	89, // 26: openim.group.GetGroupsReq.exType:type_name -> openim.protobuf.Int32Value
 	36, // 27: openim.group.GetGroupsResp.groups:type_name -> openim.group.CMSGroup
 	90, // 28: openim.group.GetGroupMembersCMSReq.pagination:type_name -> openim.sdkws.RequestPagination
 	92, // 29: openim.group.GetGroupMembersCMSResp.members:type_name -> openim.sdkws.GroupMemberFullInfo

@@ -181,7 +181,9 @@ message GetGroupsReq {
   string groupName = 2;
   string groupID = 3;
   repeated string fields = 4;
-  openim.protobuf.Int32Value exType = 5;
+  string keyword = 5; // 对应fields的模糊查询值
+  openim.protobuf.Int32Value exType = 6;
+  repeated string groupIDs = 7;
 }
 
 message GetGroupsResp {
